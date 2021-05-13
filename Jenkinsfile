@@ -30,7 +30,7 @@
        stage('Build Docker Image') {
          steps {
            script {
-              dockerImage = docker.build tooling:0.0.1
+              dockerImage = docker.build tooling
                   }
            } 
        }
