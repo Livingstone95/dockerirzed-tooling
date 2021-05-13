@@ -1,8 +1,6 @@
  pipeline {
 
-    agent {
-        dockerfile true
-       }
+    agent {dockerfile true}
 
     enviroment {
         registry = "livingstone03/tooling" 
@@ -14,12 +12,12 @@
 
         stage ("initial cleanup") {
           steps {
+
                 dir("${WORKSPACE}") {
                deleteDir()
               }
             }
         }
-    }
 
         stage('Checkout SCM') {
           steps {
@@ -61,5 +59,7 @@
           steps{
             sh "docker rmi $registry:$BUILD_NUMBER"
           }
+
+    }
 
 }
