@@ -1,12 +1,12 @@
  pipeline {
-
-    agent any
-
-    enviroment {
+ 
+    environment {
         registry = "livingstone03/tooling" 
         registryCredential = 'dockerhub-login' 
         dockerImage = ''
     }
+
+    agent any
 
     stages {
 
@@ -39,11 +39,12 @@
         //     sh './imagetest'
         //   }
 
-        stage('Tag the image')
-          steps {
+        stage('Tag the image'){
+           steps {
               sh 'docker image tag tooling:0.0.1 livingstone03/tooling:feature-0.0.1'
           }
-
+        }
+         
         stage('Deploy docker image to docker hub') {
           steps {
             script {
@@ -55,10 +56,11 @@
            }
         }
 
-        stage('Remove unsused images')
-          steps{
+        stage('Remove unsused images'){
+           steps{
             sh "docker rmi $registry:$BUILD_NUMBER"
           }
+        }
 
       }
 
