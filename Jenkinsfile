@@ -1,6 +1,6 @@
  pipeline {
 
-    agent {dockerfile true}
+    agent docker {dockerfile true}
 
     enviroment {
         registry = "livingstone03/tooling" 
@@ -31,7 +31,7 @@
                   }
            } 
        }
-       
+
         // stage('Run the container')
 
         // stage('Test the Image before pusging to registry')
