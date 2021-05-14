@@ -20,7 +20,7 @@
 
         stage('Checkout SCM') {
           steps {
-            git branch: 'feature', url: 'https://github.com/Livingstone95/dockerized-tooling.git', credentialsId: 'github-login'
+            git branch: 'feature', url: 'https://github.com/Livingstone95/dockerirzed-tooling.git', credentialsId: 'github-login'
           }
        }
 
