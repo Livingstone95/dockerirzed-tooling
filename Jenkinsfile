@@ -1,6 +1,6 @@
  pipeline {
 
-    agent {Dockerfile}
+    agent any
 
     enviroment {
         registry = "livingstone03/tooling" 
@@ -27,7 +27,7 @@
        stage('Build Docker Image') {
          steps {
            script {
-              dockerImage = docker.build tooling
+              dockerImage = docker.build registry
                   }
            } 
        }
