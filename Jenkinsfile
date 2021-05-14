@@ -10,9 +10,8 @@
 
     stages {
 
-        stage ("initial cleanup") {
+        stage ('initial cleanup') {
           steps {
-
                 dir("${WORKSPACE}") {
                deleteDir()
               }
@@ -32,6 +31,7 @@
                   }
            } 
        }
+       
         // stage('Run the container')
 
         // stage('Test the Image before pusging to registry')
@@ -60,6 +60,6 @@
             sh "docker rmi $registry:$BUILD_NUMBER"
           }
 
-    }
+      }
 
 }
