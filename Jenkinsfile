@@ -1,6 +1,6 @@
  pipeline {
 
-    agent docker {dockerfile true}
+    agent {dockerfile}
 
     enviroment {
         registry = "livingstone03/tooling" 
