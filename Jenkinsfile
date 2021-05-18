@@ -69,7 +69,8 @@
 
         stage('Remove unsused images'){
            steps{
-            sh "docker rmi $registry:$BUILD_NUMBER"
+            sh "docker rmi $registry:latest"
+            sh "${registry}:feature-0.0.1"
           }
         }
 
