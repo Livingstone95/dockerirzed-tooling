@@ -52,7 +52,7 @@
 
         stage('Tag the image'){
            steps {
-              sh 'docker image tag ${registry}:feature-0.0.1'
+              sh 'docker image tag ${registry}:latest ${registry}:feature-0.0.1'
           }
         }
          
