@@ -60,7 +60,7 @@
           steps {
             script {
             docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
+            dockerImage.push(${registry}:feature-0.0.1)
                }
             }
 
