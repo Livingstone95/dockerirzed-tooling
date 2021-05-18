@@ -60,7 +60,7 @@
           steps {
             script {
             docker.withRegistry( '', registryCredential ) {
-            dockerImage.push('livingstone03/tooling:feature-0.0.1')
+            dockerImage.push('${registry}:feature-0.0.1')
                }
             }
 
