@@ -24,6 +24,13 @@
           }
        }
 
+      // stage('remove existing image if there is any'){
+      //   steps{
+      //      sh 'docker rmi registry'
+      //   }    
+      // }
+// write a command to ignore if the image does not exits, the stage should igonre the error and continue
+
        stage('Build Docker Image') {
          steps {
            script {
@@ -32,7 +39,11 @@
            } 
        }
 
-        // stage('Run the container')
+        // stage('Run the container'){
+        //   steps{
+        //     sh 'docker run registry'
+        //   }
+        // }
 
         // stage('Test the Image before pusging to registry')
         //   steps{
@@ -41,7 +52,7 @@
 
         stage('Tag the image'){
            steps {
-              sh 'docker image tag tooling:0.0.1 livingstone03/tooling:feature-0.0.1'
+              sh 'docker image tag registry livingstone03/tooling:feature-0.0.1'
           }
         }
          
