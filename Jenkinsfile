@@ -1,7 +1,7 @@
  pipeline {
  
     environment {
-        registry = "livingstone03/tooling" 
+        Imagename = "livingstone03/tooling" 
         registryCredential = 'dockerhub-login' 
         dockerImage = ''
     }
@@ -34,14 +34,14 @@
        stage('Build Docker Image') {
          steps {
            script {
-              dockerImage = docker.build registry
+              dockerImage = docker.build Imagename
                   }
            } 
        }
 
         // stage('Run the container'){
         //   steps{
-        //     sh 'docker run registry'
+        //     sh 'docker run ${Imagename}'
         //   }
         // }
 
@@ -52,7 +52,7 @@
 
         stage('Tag the image'){
            steps {
-              sh 'docker image tag ${registry}:latest ${registry}:feature-0.0.1'
+              sh 'docker image tag ${Imagename}:latest ${Imagename}:feature-0.0.1'
           }
         }
          
@@ -60,17 +60,17 @@
           steps {
             script {
             docker.withRegistry( '', registryCredential ) {
-            dockerImage.push('${registry}:feature-0.0.1')
+            dockerImage.push('feature-0.0.1')
                }
             }
 
            }
         }
 
-        stage('Remove unsused images'){
+        stage('Remove images'){
            steps{
-            sh "docker rmi $registry:latest"
-            sh "docker rmi ${registry}:feature-0.0.1"
+            sh "docker rmi $Imagename:latest"
+            sh "docker rmi $Imagename:feature-0.0.1"
           }
         }
 
